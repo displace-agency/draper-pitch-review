@@ -1,3 +1,14 @@
+---
+title: Draper AI Pitch Coach
+emoji: 🚀
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: "4.36.1"
+app_file: app.py
+pinned: false
+---
+
 # Draper AI Pitch Coach
 
 AI-powered pitch deck review tool for Draper Associates that provides instant feedback on startup pitch decks.
