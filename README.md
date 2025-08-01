@@ -2,6 +2,14 @@
 
 AI-powered pitch deck review tool for Draper Associates that provides instant feedback on startup pitch decks.
 
+> 📚 **For complete project documentation including current status and setup progress, see [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md)**
+
+## Quick Links
+
+- **Live HF Space**: https://huggingface.co/spaces/displace-agency/draper-pitch-coach
+- **Webflow Integration Guide**: [WEBFLOW_INTEGRATION.md](WEBFLOW_INTEGRATION.md)
+- **Full Documentation**: [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md)
+
 ## Features
 
 - 🤖 GPT-4o powered analysis
@@ -12,36 +20,38 @@ AI-powered pitch deck review tool for Draper Associates that provides instant fe
 - 🌐 API endpoints for integration
 - 🎨 Gradio UI for standalone use
 
-## Setup
+## Quick Start
 
-### 1. Create a Hugging Face Space
+### 1. Clone Repository
+```bash
+git clone https://github.com/displace-agency/draper-pitch-review.git
+cd draper-pitch-review
+```
 
-1. Go to https://huggingface.co/new-space
-2. Name your space (e.g., `draper-pitch-coach`)
-3. Select "Gradio" as the SDK
-4. Link to this GitHub repository
+### 2. Set Environment Variables
+Required environment variables:
+- `OPENAI_API_KEY`
+- `FOLDER_ID` 
+- `SHEET_ID`
+- `GOOGLE_CREDENTIALS_JSON`
+- `ALLOWED_ORIGINS`
 
-### 2. Configure Environment Variables
+### 3. Deploy to Hugging Face Space
+1. Create new Space at https://huggingface.co/new-space
+2. Select Gradio SDK
+3. Link to this repository
+4. Add environment variables in Settings
 
-In your Hugging Face Space settings, add:
+### 4. Integrate with Webflow
+See [WEBFLOW_INTEGRATION.md](WEBFLOW_INTEGRATION.md) for detailed instructions.
 
-- `OPENAI_API_KEY`: Your OpenAI API key
-- `FOLDER_ID`: Google Drive folder ID for PDF storage
-- `SHEET_ID`: Google Sheets ID for logging
-- `GOOGLE_CREDENTIALS_JSON`: Google service account credentials (JSON string)
-- `ALLOWED_ORIGINS`: Allowed domains for CORS (comma-separated)
-- `OPENAI_PROMPT`: Custom analysis prompt (optional)
+## Current Status
 
-### 3. Google Cloud Setup
+**🔄 Configuration Phase** - The application is deployed but awaiting environment variables configuration.
 
-1. Create a service account in Google Cloud Console
-2. Enable Google Drive and Sheets APIs
-3. Share your Drive folder and Sheet with the service account email
-4. Download credentials and set as `GOOGLE_CREDENTIALS_JSON`
+See [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md#current-status) for detailed status.
 
 ## API Usage
-
-The tool provides REST API endpoints for integration:
 
 ### Create Session
 ```bash
@@ -59,66 +69,27 @@ Content-Type: multipart/form-data
 file=@pitch.pdf&name=John+Doe&email=john@startup.com&session_token=abc123
 ```
 
-## Webflow Integration
+## Project Structure
 
-See [WEBFLOW_INTEGRATION.md](WEBFLOW_INTEGRATION.md) for detailed integration instructions.
-
-## Security Features
-
-- Rate limiting: 3 submissions per email per 24 hours
-- File validation: PDF only, max 10MB
-- CORS protection
-- Input sanitization
-- Session validation
-
-## Development
-
-### Local Setup
-```bash
-# Clone the repository
-git clone https://github.com/displace-agency/draper-pitch-review.git
-cd draper-pitch-review
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set environment variables
-export OPENAI_API_KEY="your-key"
-export FOLDER_ID="your-folder-id"
-export SHEET_ID="your-sheet-id"
-export GOOGLE_CREDENTIALS_JSON='{"type":"service_account",...}'
-
-# Run the app
-python app.py
 ```
-
-### Testing
-- Access Gradio UI at http://localhost:7860
-- Test API at http://localhost:7860/api/analyze-pitch
-
-## Architecture
-
-- **Frontend**: Gradio for UI, FastAPI for API endpoints
-- **AI**: OpenAI GPT-4o for pitch analysis
-- **Storage**: Google Drive for PDFs, Google Sheets for metadata
-- **Security**: Rate limiting, CORS, input validation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
+draper-pitch-review/
+├── app.py                      # Main application with Gradio UI and API
+├── config.py                   # Configuration management
+├── requirements.txt            # Python dependencies
+├── Logo.png                    # Draper logo
+├── README.md                   # This file
+├── PROJECT_DOCUMENTATION.md    # Complete project documentation
+├── WEBFLOW_INTEGRATION.md      # Webflow integration guide
+├── .gitignore                  # Git ignore rules
+└── .gitattributes             # Git LFS configuration
+```
 
 ## Support
 
 For questions or issues:
 - Create a GitHub issue
 - Contact: hello@displace.agency
+- See [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md#contact--support)
 
 ---
 
